@@ -15,6 +15,7 @@
   <%- @getBlock('meta').toHTML() %>
 
   <!-- DocPad Styles + Our Own -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   <%- @getBlock('styles').add(@site.styles).toHTML() %>
 
 
@@ -45,23 +46,25 @@
     <h2 id="subtitle">Front-end Development and Consulting Blog.</h2>
   </li>
 
-  <li class="link">
-    <a href="/about.html">about</a>
-  </li>
+  <% for post in @getFilesAtPath("pages").toJSON(): %>
+    <li class="link"><a href="<%= post.url %>"><%= post.title %></a></li>
+  <% end %>
+
+  <li class="link"><a href="https://twitter.com/colynb"><img src="/img/twitter-small.png" style="vertical-align: middle;">&nbsp;@colynb</a></li>
+
+
 </ul>
 
 
 <!-- Octopress Love -->
-<aside id="octopress_linkback">
-  <a href="http://octopress.org/">
+<aside>
     <span class="unicode_square">
       <span class="unicode_circle">
         &nbsp;
       </span>
     </span>
-    <span class="docpad">Powered by Docpad</span>
+    <span class="docpad"><a href="http://docpad.org//">Powered by Docpad</a></span>
     <p><small>&copy; 2013 Colyn Brown</small></p>
-  </a>
 </aside>
 
   </header>
