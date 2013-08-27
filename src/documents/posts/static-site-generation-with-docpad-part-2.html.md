@@ -11,7 +11,7 @@ title: Static Site Generation With Docpad (Part 2)
 
 <p>The simplicity of setting up Docpad was one of the reasons I chose it over Octopress. The Docpad <a href="http://docpad.org/docs/intro">Getting Started Guide</a> is a great intro, so start there. The only difficulty I had was in getting my site deployed to Github Pages, using the Docpad plugin. The Docpad deployment guide makes a lot of assumptions about your level of understanding of how Github Pages works. This is all they provide from the docs:</p>
 
-<pre><code class="lang-coffeescript">npm install --save docpad-plugin-ghpages
+<pre><code class="lang-html">npm install --save docpad-plugin-ghpages
 docpad deploy-ghpages
 </code></pre>
 
@@ -24,7 +24,7 @@ docpad deploy-ghpages
 </p>
 
 <pre>
-<code class="lang-text">~/Sites/colynb.com
+<code class="lang-html">~/Sites/colynb.com
     ├── OUTPUT (colynb.github.io.git)
     │   ├── icons
     │   ├── img
@@ -46,7 +46,7 @@ docpad deploy-ghpages
 <p>To do this, you just need to tell Docpad where it should save the output. You do that by modifying the docpad.coffee file. Per the <a href="http://docpad.org/docs/config#available-configuration">config docs</a>, you just need to set the <code>outPath</code></p>
 
 <pre>
-<code class="lang-text">outPath: '../OUTPUT'</code>
+<code class="lang-html">outPath: '../OUTPUT'</code>
 </pre>
 
 <p>This will allow you to create and maintain two separate repositories, one for the output (which gets pushed to Github Pages), and the other for your source code.</p>
@@ -66,7 +66,7 @@ docpad deploy-ghpages
 </p>
 
 <pre>
-<code class="lang-text">~/Sites/colynb.com
+<code class="lang-html">~/Sites/colynb.com
     ├── OUTPUT (colynb.github.io.git)
     │   ├── CNAME <--- contains "colynb.com"
 </code></pre>
