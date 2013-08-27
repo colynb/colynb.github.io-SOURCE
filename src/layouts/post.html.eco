@@ -1,12 +1,23 @@
 ---
 layout: 'main'
 ---
+
+<label class="label label-default"><%= @document.date %></label>
 <h1 class="entry-title"><%= @document.title %></h1>
 <div><%- @content %></div>
 
 <hr>
 
-<p><a class="btn btn-default" href="https://github.com/colynb/colynb.github.io-SOURCE/blob/master/src/documents/<%= @document.relativeDirPath %>/<%= @document.filename %>">Edit This Page</a></p>
+Found this useful? <a href="https://twitter.com/share" class="twitter-share-button" data-via="colynb">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<hr>
+
+<p><a class="btn btn-default" href="https://github.com/colynb/colynb.github.io-SOURCE/blob/master/src/documents/<%= @document.relativeDirPath %>/<%= @document.filename %>">Edit This Page</a>
+
+&nbsp;&nbsp;<span class="glyphicon glyphicon-hand-left"></span> <span class="text-muted">You too can edit this page! ... just make your change then submit a pull request!</span>
+
+</p>
 
 <hr>
 

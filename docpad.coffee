@@ -22,7 +22,7 @@ docpadConfig = {
 			]
 
 			# The default title of our website
-			title: "Colyn Brown - Front-end Development Consultant"
+			title: "Tales from the Front-end!"
 
 			# The website description (for SEO)
 			description: """
@@ -36,14 +36,17 @@ docpadConfig = {
 
 			# The website's styles
 			styles: [
-				'/styles/style.css'
+				'/styles/bootstrap.css'
+				'/styles/solarized_dark.css'
 			]
 
 			# The website's scripts
 			scripts: [
 				'/vendor/log.js'
 				'/vendor/modernizr.js'
+				'http://code.jquery.com/jquery-1.10.1.min.js'
 				'/scripts/script.js'
+				'/scripts/bootstrap.js'
 			]
 
 
@@ -70,6 +73,9 @@ docpadConfig = {
 		getPreparedKeywords: ->
 			# Merge the document keywords with the site keywords
 			@site.keywords.concat(@document.keywords or []).join(', ')
+
+		getPostDescription: (post) ->
+			post.contentRenderedWithoutLayouts
 
 
 	# =================================

@@ -1,62 +1,67 @@
 ---
 layout: post
+date: 2013-08-25
 title: DOM Horror with EmberJS
 ---
 
-So, I've been playing with [EmberJS](http://emberjs.com) over the last few weeks, going through their tutorials and just generally soaking it in. I really appreciate the level of effort and thoughtfulness that Tom Dale and Yehuda Katz have put into this project. I really looked forward to using it more often.
+I started using the Javascript framework, [EmberJS](http://emberjs.com), after using [AngularJS](http://angularjs.org/) for a few months. So far, there's a level of friendliness in Ember that I don't see in Angular. There's a nomenclature within Angular that is a little foreign to me and has made the learning curve a little more steep for me.
 
-Then, while inspecting the DOM, I found this:
+After spending a few weeks getting familiar with Ember, going through the documentation and tutorials, I really started getting into it. I feel very productive with it.
 
-<pre>
-&lt;div id=&quot;ember162&quot; class=&quot;ember-view&quot;&gt;
-    &lt;h2&gt;Welcome to Ember.js&lt;/h2&gt;
+Then...
 
-    &lt;script id=&quot;metamorph-1-start&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-    &lt;script id=&quot;metamorph-0-start&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-    &lt;ul&gt;
-    	&lt;script id=&quot;metamorph-5-start&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-    	&lt;script id=&quot;metamorph-2-start&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-		&lt;li&gt;
-			&lt;script id=&quot;metamorph-6-start&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-			red
-			&lt;script id=&quot;metamorph-6-end&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-		&lt;/li&gt;
-    	&lt;script id=&quot;metamorph-2-end&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-    	&lt;script id=&quot;metamorph-3-start&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-		&lt;li&gt;
-			&lt;script id=&quot;metamorph-7-start&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-			yellow
-			&lt;script id=&quot;metamorph-7-end&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-		&lt;/li&gt;
-		&lt;script id=&quot;metamorph-3-end&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-		&lt;script id=&quot;metamorph-4-start&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-		&lt;li&gt;
-			&lt;script id=&quot;metamorph-8-start&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-			blue
-			&lt;script id=&quot;metamorph-8-end&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-		&lt;/li&gt;
-		&lt;script id=&quot;metamorph-4-end&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-		&lt;script id=&quot;metamorph-5-end&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-	&lt;/ul&gt;
-	&lt;script id=&quot;metamorph-0-end&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-	&lt;script id=&quot;metamorph-1-end&quot; type=&quot;text/x-placeholder&quot;&gt;&lt;/script&gt;
-&lt;/div&gt;
-</pre>
-
-I was completely <em>horrified!</em>  All that code just to render this:
+There's something about Ember that you should be aware of that I hadn't noticed at first. I opened the DOM inspector in Chrome to see the generated HTML, and I found something that looked similar to this nightmarish chunk of HTML:
 
 <pre>
-&lt;div&gt;
+	<code class="lang-html"><div id="ember162" class="ember-view">
+    <h2>Welcome to Ember.js</h2>
+
+    <script id="metamorph-1-start" type="text/x-placeholder"></script>
+    <script id="metamorph-0-start" type="text/x-placeholder"></script>
+    <ul>
+        <script id="metamorph-5-start" type="text/x-placeholder"></script>
+        <script id="metamorph-2-start" type="text/x-placeholder"></script>
+        <li>
+            <script id="metamorph-6-start" type="text/x-placeholder"></script>
+            red
+            <script id="metamorph-6-end" type="text/x-placeholder"></script>
+        </li>
+        <script id="metamorph-2-end" type="text/x-placeholder"></script>
+        <script id="metamorph-3-start" type="text/x-placeholder"></script>
+        <li>
+            <script id="metamorph-7-start" type="text/x-placeholder"></script>
+            yellow
+            <script id="metamorph-7-end" type="text/x-placeholder"></script>
+        </li>
+        <script id="metamorph-3-end" type="text/x-placeholder"></script>
+        <script id="metamorph-4-start" type="text/x-placeholder"></script>
+        <li>
+            <script id="metamorph-8-start" type="text/x-placeholder"></script>
+            blue
+            <script id="metamorph-8-end" type="text/x-placeholder"></script>
+        </li>
+        <script id="metamorph-4-end" type="text/x-placeholder"></script>
+        <script id="metamorph-5-end" type="text/x-placeholder"></script>
+    </ul>
+    <script id="metamorph-0-end" type="text/x-placeholder"></script>
+    <script id="metamorph-1-end" type="text/x-placeholder"></script>
+</div>
+</code></pre>
+
+My jaw dropped. I was completely <em>horrified!</em>  All that code just to render this:
+
+<pre><code class="lang-html">&lt;div&gt;
 	&lt;h2&gt;Welcome to Ember.js&lt;/h2&gt;
 	&lt;ul&gt;
 		&lt;li&gt;red&lt;/li&gt;
 		&lt;li&gt;yellow&lt;/li&gt;
 		&lt;li&gt;blue&lt;/li&gt;
 	&lt;/ul&gt;
-&lt;/div&gt;
+&lt;/div&gt;</code>
 </pre>
 
 And this is the code that's generated right from their starter template! 
 
-Yeah, the ember docs [ explain it well enough ](http://emberjs.com/guides/understanding-ember/keeping-templates-up-to-date/) so I get why it has to be that way. Even so, it really pains me to say this because I really like the philosophy behind Ember, but unfortunately, this is a deal breaker for me. Anyone else feel the same way?
+Yeah, the ember docs [explain it](http://emberjs.com/guides/understanding-ember/keeping-templates-up-to-date/) so I get why it has to be that way. Nevertheless, it's something that has been hard for me to accept. I don't see anything like that being generated by Angular. This seems like an awful lot of bloat that could potentially make it harder for you to style your pages.
 
+I'll continue to use Ember but I think this needs to be fixed.
