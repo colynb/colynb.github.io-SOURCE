@@ -70,4 +70,4 @@ $ gulp
 
 In this example, the default task runs both the templates and styles tasks plus starts a watcher method that watches for changes to particular files and then runs a specified task when the file changes.
 
-That's it, I think it's all pretty self-explanatory. I've written a couple plugins for it already that I've been using in my projects: [gulp-swig](https://npmjs.org/package/gulp-swig) and [gulp-html-prettify](https://npmjs.org/package/gulp-html-prettify).
+That's it, I think it's all pretty self-explanatory. I've written a couple plugins for it already that I've been using in my projects: [gulp-swig](https://npmjs.org/package/gulp-swig) and [gulp-html-prettify](https://npmjs.org/package/gulp-html-prettify). I'll be following this up to walk you  though creating a gulp plugin. In the meantime, make sure you check out their [github page](https://github.com/wearefractal/gulp) where they talk a little about that.
