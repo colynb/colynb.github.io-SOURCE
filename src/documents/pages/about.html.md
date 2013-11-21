@@ -28,4 +28,4 @@ I set it up so that, if you are so inclined, anyone can edit any of the posts. I
 
 #### What's up with the [Battle of the Planets](http://en.wikipedia.org/wiki/Battle_of_the_Planets) avatar?
 
-Not sure exactly. It was a cartoon I was hooked on as a kid. There's an aesthetic quality and craftmanship to that show that has always amazed and inspired me. I started using it as an avatar many years ago and I've had it for so long, I can't let go of it.  
+Not sure exactly. It was a cartoon I was hooked on as a kid. There's an aesthetic quality and craftsmanship to that show that has always amazed and inspired me. I started using it as an avatar many years ago and I've had it for so long, I can't let go of it.  
